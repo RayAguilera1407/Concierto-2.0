@@ -29,7 +29,7 @@ def menu ():
 def comprar_entrada():
     print("COMPRAR ENTRADA")
     nombre = validar_nombre("Ingrese nombre comprador: ")
-    if validar_nombre_existente(nombre)
+    if validar_nombre_existente(nombre):
         print("Nombre ya existe!")
         return
     tipo = validar_tipo()
@@ -68,6 +68,13 @@ def cancelar_compra():
     print("Nombre no encontrado.")
 
 def validar_nombre(mensaje: str):
+    while True:
+        nombre = input(mensaje).strip().title()
+        if len(nombre)>=3 and nombre.isalpha():
+            return(nombre)
+        print("ERROR!! nombre mínimo 3 letras!!")
+
+def validar_tipo():
     while True:
         tipo = input("Ingrese tipo de entrada(G:general o V:vip): ").upper()
         if tipo in tipos:
